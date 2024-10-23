@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>dice</title>
+    <style>
+      body {
+        background-color: #1e1e1e;
+      }
+
+      #dice {
+        display: block;
+        width: 150px;
+        border-radius: 10px;
+        border-style: solid;
+        transition: scale 0.3s ease;
+        border-color: black;
+        border-width: 5px;
+      }
+
+      .button {
+        border-style:none;
+        border-width: 3px;
+        font-size: 18px;
+        color: white;
+        transition: background-color 0.2s;
+        display: block;
+        background-color: rgba(0, 0, 0, 0);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: 0.3s ease;
+        background-color: #000000;
+      }
+
+      .button:hover #dice {
+        scale: 1.1;
+      }
+
+      .button:hover .overlay  {
+        opacity: 0.2;
+        scale: 1.1;
+      }
+
+      .button:active #dice {
+        scale: 1;
+      }
+
+      .button:active .overlay {
+        opacity: 0;
+        scale: 1;
+      }
+
+      #amount {
+        color: white;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: 500;
+        font-size: 26px;
+        text-align: center;
+        vertical-align: middle;
+        padding-top: 260px;
+        text-shadow:
+        -3px -3px 0 #000,  
+        3px -3px 0 #000,
+        -3px  3px 0 #000,
+        3px  3px 0 #000;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="section">
+      <button class="button" onclick="roleDice(), rollCount()">      
+        <img id="dice" src="1.png">
+        <div class="overlay"></div>
+      </button>
+      <p id="amount">
+        Times Roled : 0
+      </p>
+
+    </div>
+
+    <script>
+      function roleDice() {
+        let dice = Math.random();
+
+        if (dice >= 0 && dice < 1/6) {
+          document.getElementById('dice').src="1.png";
+        } else if (dice >= 1/6 && dice < 2/6) {
+          document.getElementById('dice').src="2.png";
+        } else if (dice >= 2/6 && dice < 3/6) {
+          document.getElementById('dice').src="3.png";
+        } else if (dice >= 3/6 && dice < 4/6) {
+          document.getElementById('dice').src="4.png";
+        } else if (dice >= 4/6 && dice < 5/6) {
+          document.getElementById('dice').src="5.png";
+        } else if (dice >= 5/6 && dice < 6/6) {
+          document.getElementById('dice').src="6.png";
+        }
+        
+        console.log(dice)
+      }
+
+      let countRoll = 0;
+
+      function rollCount() {
+        countRoll = countRoll + 1
+        document.getElementById('amount').innerHTML = `Times Roled : ${countRoll}`
+      }
+    
+
+    </script>
+  </body>
+</html>
