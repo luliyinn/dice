@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>dice</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Dice</title>
     <style>
-      body {
-        background-color: #1e1e1e;
-      }
 
       #dice {
         display: block;
@@ -19,9 +17,6 @@
 
       .button {
         border-style:none;
-        border-width: 3px;
-        font-size: 18px;
-        color: white;
         transition: background-color 0.2s;
         display: block;
         background-color: rgba(0, 0, 0, 0);
@@ -29,6 +24,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+
       }
 
       .overlay {
@@ -37,11 +33,11 @@
         bottom: 0;
         left: 0;
         right: 0;
-        height: 100%;
-        width: 100%;
         opacity: 0;
         transition: 0.3s ease;
         background-color: #000000;
+        border-radius: 10px;
+        margin: 0 5px 0 5px;
       }
 
       .button:hover #dice {
@@ -68,18 +64,38 @@
         font-weight: 500;
         font-size: 26px;
         text-align: center;
-        vertical-align: middle;
-        padding-top: 260px;
-        text-shadow:
-        -3px -3px 0 #000,  
-        3px -3px 0 #000,
-        -3px  3px 0 #000,
-        3px  3px 0 #000;
+        background-color: rgba(0, 0, 0, 0.562);
+        backdrop-filter: blur(5px);
+        width: 220px;
+        height: 40px;
+        border-radius: 10px;
+        padding: 2px 0;
+        margin-left: auto;
+        margin-right: auto;
+        border: solid 4px black;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -350%);
+      }
+
+      video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index:-100;
       }
 
 
     </style>
   </head>
+
+  <video autoplay muted loop>
+    <source src="background.mp4" type="video/mp4">
+  </video>
+
   <body>
     <div class="section">
       <button class="button" onclick="roleDice(), rollCount()">      
@@ -87,7 +103,7 @@
         <div class="overlay"></div>
       </button>
       <p id="amount">
-        Times Roled : 0
+        Times Rolled : 0
       </p>
 
     </div>
@@ -117,7 +133,7 @@
 
       function rollCount() {
         countRoll = countRoll + 1
-        document.getElementById('amount').innerHTML = `Times Roled : ${countRoll}`
+        document.getElementById('amount').innerHTML = `Times Rolled : ${countRoll}`
       }
     
 
